@@ -1,0 +1,59 @@
+version: 2.1
+orbs:
+  node: circleci/node@3.0.1
+dependencies:
+  pre:
+    - npm install npm@latest -g # Should fix bug in ng test
+    - npm install @angular/cli -g
+jobs:
+  build-frontend:
+    working_directory: ~
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - node/install-packages:
+          app-dir: ~
+          cache-path: ~/node_modules
+          override-ci-command: npm install
+      - run:
+          name: Install Angular CLI
+          command: |
+            npm i @angular/cli
+      - run:
+          name: Make Production Build
+          command: |
+            ./node_modules/@angular/cli/bin/ng build --prod
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
+  deploy-frontend:
+    working_directory: ~
+    machine:
+      enabled: true
+    steps:
+      - attach_workspace:
+          at: .
+      - add_ssh_keys
+      - run:
+          name: Upload Production build to server
+          command: |
+            cd dist/
+            scp -r ./AditusDash/* root@46.101.19.841:/root/aditusdash-front-temp/
+      - run:
+          name: Deploy Frontend over SSH
+          command: |
+            cd dist/
+            ssh root@46.101.19.841 "sudo rm -rf /var/www/html/* && sudo mv /root/aditusdash-front-temp/* /var/www/html/"
+workflows:
+  build:
+    jobs:
+      - build-frontend
+      - deploy-frontend:
+          requires:
+            - build-frontend
+          filters:
+            branches:
+              only: master
