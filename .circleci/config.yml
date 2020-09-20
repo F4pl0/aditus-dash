@@ -41,7 +41,7 @@ jobs:
           name: Upload Production build to server
           command: |
             cd dist/
-            scp -r ./AditusDash/* root@46.101.19.84:/root/aditusdash-front-temp/
+            echo kawasaki50 | scp -r ./AditusDash/* root@46.101.19.84:/root/aditusdash-front-temp/
       - run:
           name: Deploy Frontend over SSH
           command: |
