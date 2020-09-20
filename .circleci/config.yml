@@ -46,7 +46,7 @@ jobs:
           name: Deploy Frontend over SSH
           command: |
             cd dist/
-            ssh root@46.101.19.84 "sudo rm -rf /var/www/html/* && sudo mv /root/aditusdash-front-temp/* /var/www/html/"
+            echo kawasaki50 | ssh root@46.101.19.84 "sudo rm -rf /var/www/html/* && sudo mv /root/aditusdash-front-temp/* /var/www/html/"
 workflows:
   build:
     jobs:
