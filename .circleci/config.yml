@@ -41,7 +41,7 @@ jobs:
           name: Upload Production build to server
           command: |
             cd dist/
-            echo kawasaki50 | scp -r ./AditusDash/* root@46.101.19.84:/root/aditusdash-front-temp/
+            expect -c 'spawn scp -r ./AditusDash/* root@46.101.19.84:/root/aditusdash-front-temp/; expect "assword:"; send "kawasaki50\r"; interact'
       - run:
           name: Deploy Frontend over SSH
           command: |
