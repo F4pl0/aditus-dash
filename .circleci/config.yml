@@ -41,12 +41,12 @@ jobs:
           name: Upload Production build to server
           command: |
             cd dist/
-            expect -c 'spawn scp -r ./AditusDash/* root@46.101.19.84:/root/aditusdash-front-temp/; expect "assword:"; send "kawasaki50\r"; interact'
+            scp -r ./AditusDash/* root@46.101.19.84:/root/aditusdash-front-temp/
       - run:
           name: Deploy Frontend over SSH
           command: |
             cd dist/
-            expect -c 'spawn ssh root@46.101.19.84 "sudo rm -rf /var/www/html/* && sudo mv /root/aditusdash-front-temp/* /var/www/html/"; expect "assword:"; send "kawasaki50\r"; interact'
+            ssh root@46.101.19.84 "sudo rm -rf /var/www/html/* && sudo mv /root/aditusdash-front-temp/* /var/www/html/"
 workflows:
   build:
     jobs:
