@@ -46,7 +46,7 @@ jobs:
           name: Deploy Frontend over SSH
           command: |
             cd dist/
-            echo kawasaki50 | ssh root@46.101.19.84 "sudo rm -rf /var/www/html/* && sudo mv /root/aditusdash-front-temp/* /var/www/html/"
+            expect -c 'spawn ssh root@46.101.19.84 "sudo rm -rf /var/www/html/* && sudo mv /root/aditusdash-front-temp/* /var/www/html/"; expect "assword:"; send "kawasaki50\r"; interact'
 workflows:
   build:
     jobs:
