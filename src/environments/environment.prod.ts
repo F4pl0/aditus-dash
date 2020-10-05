@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  backendEndpoint: 'https://api.365aditus.com/api/'
 };

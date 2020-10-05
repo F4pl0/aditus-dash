@@ -1,0 +1,14 @@
+<div class="wrapper">
+  <div class="head">
+    <span> Restock </span>
+    <button mat-icon-button (click)="closeDialog()"> <mat-icon>close</mat-icon> </button>
+  </div>
+
+  <form [formGroup]="restockForm" (ngSubmit)="onSubnit(restockForm.value)" >
+    <mat-form-field>
+      <mat-label> Inventar (kom.) </mat-label>
+      <input matInput type="number" formControlName="stock" />
+    </mat-form-field>
+    <button mat-flat-button color="primary" type="submit"> U Redu </button>
+  </form>
+</div>

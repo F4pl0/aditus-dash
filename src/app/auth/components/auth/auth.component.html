@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <h1> Aditus Dash </h1>
+  <h2> Login </h2>
+  <form class="auth-card" [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+    <mat-form-field class="example-full-width">
+      <mat-label> Email </mat-label>
+      <input formControlName="email" matInput type="email" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label> Lozinka </mat-label>
+      <input formControlName="pass" matInput [type]="hide ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary"> Login </button>
+  </form>
+</div>

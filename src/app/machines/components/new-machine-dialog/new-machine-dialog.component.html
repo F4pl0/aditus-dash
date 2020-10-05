@@ -1,0 +1,37 @@
+<div class="wrapper">
+  <div class="head">
+    <span> Dodaj Masinu </span>
+    <button mat-icon-button (click)="closeDialog()"> <mat-icon>close</mat-icon> </button>
+  </div>
+
+  <form [formGroup]="machineForm" (ngSubmit)="onSubnit(machineForm.value)" >
+    <mat-form-field>
+      <mat-label> Lokacija </mat-label>
+      <input matInput type="text" formControlName="location" />
+    </mat-form-field>
+    Slika
+    <input type="file" formControlName="image" (change)="onFileChanged($event)" />
+    <mat-form-field>
+      <mat-label> Stvar </mat-label>
+      <input matInput type="text" formControlName="item" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label> Cena (RSD) </mat-label>
+      <input matInput type="number" formControlName="price" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label> Trenutni inventar (kom.) </mat-label>
+      <input matInput type="number" formControlName="stock" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label> Max inventar (kom.) </mat-label>
+      <input matInput type="number" formControlName="maxStock" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label> Cena Lokala (RSD/mesec) </mat-label>
+      <input matInput type="number" formControlName="locationPrice" />
+    </mat-form-field>
+
+    <button mat-flat-button color="primary"> U Redu </button>
+  </form>
+</div>
