@@ -1,0 +1,35 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+
+  .head {
+    display: flex;
+    justify-content: space-between;
+
+    align-items: center;
+    align-content: center;
+    padding-bottom: 32px;
+
+    span {
+      font-family: 'Titillium Web', sans-serif;
+      font-size: 24px;
+      padding-right: 42px;
+    }
+  }
+
+  .confirm-txt {
+    font-size: 22px;
+  }
+
+  .buttons {
+    margin-top: 24px;
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+      margin: 8px;
+    }
+  }
+}

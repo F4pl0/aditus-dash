@@ -1,0 +1,24 @@
+<div class="wrapper">
+  <div class="machine" *ngFor="let machine of machines">
+    <h1> {{ machine.location }} </h1>
+    <img src="{{machine.image}}" alt="Logo" />
+    <circle-progress
+      [percent]="machine.stock / machine.maxStock * 100"
+      [title]="machine.stock+'/'+machine.maxStock"
+      [radius]="70"
+      [outerStrokeWidth]="16"
+      [innerStrokeWidth]="8"
+      [outerStrokeColor]="'#3f51b5'"
+      [innerStrokeColor]="'#5e89cf'"
+      [animation]="true"
+      [animationDuration]="300"
+      [subtitle]="machine.item"
+      [showUnits]="false"
+    ></circle-progress>
+    <button mat-flat-button color="primary" routerLink="/machines/machine/{{machine._id}}"> Više </button>
+  </div>
+
+  <div class="add machine" (click)="openNewMachineDialog()">
+    <button mat-icon-button> <mat-icon>add</mat-icon> </button>
+  </div>
+</div>

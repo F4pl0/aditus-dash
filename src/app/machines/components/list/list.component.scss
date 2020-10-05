@@ -1,0 +1,60 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+
+  .machine {
+    padding: 24px;
+    margin: 24px;
+
+    width: 256px;
+
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    h1 {
+      font-family: 'Titillium Web', sans-serif;
+      font-size: 24px;
+    }
+
+    img {
+      width: 256px;
+      height: 256px;
+      object-fit: contain;
+      border-radius: 16px;
+    }
+
+    .inl {
+      display: flex;
+
+      .stats {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+
+        justify-content: center;
+        padding-right: 16px;
+      }
+    }
+  }
+
+  .add {
+    height: 527.333px;
+    width: 256px;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    cursor: pointer;
+    transition: .3s ease;
+
+    &:hover {
+      transition: .3s ease;
+      background-color: #dddddd;
+    }
+  }
+}

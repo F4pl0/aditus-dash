@@ -1,0 +1,71 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    display: flex;
+    padding: 24px;
+    justify-content: space-between;
+
+    .flex-middle {
+      display: flex;
+      align-items: center;
+      align-content: center;
+
+      .location-logo {
+        height: 256px;
+        width: 256px;
+        object-fit: contain;
+        border-radius: 16px;
+      }
+
+      .title {
+        font-family: 'Titillium Web', sans-serif;
+        font-size: 72px;
+        margin-left: 16px;
+      }
+    }
+
+    .flex-top {
+      display: flex;
+      align-content: flex-start;
+      align-items: flex-start;
+
+      button {
+        margin: 16px 8px;
+      }
+    }
+  }
+
+  .info {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+
+    .panel {
+      width: 360px;
+      height: 100px;
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+      margin: 16px;
+      align-items: center;
+      align-content: center;
+      justify-content: space-evenly;
+      background-color: #fefefe;
+      border-radius: 16px;
+
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+      .name-txt {
+        font-family: 'Titillium Web', sans-serif;
+        font-size: 32px;
+      }
+
+      .val-txt {
+        font-size: 16px;
+      }
+    }
+  }
+}

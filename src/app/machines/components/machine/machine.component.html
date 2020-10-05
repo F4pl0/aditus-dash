@@ -1,0 +1,47 @@
+<div class="wrapper">
+  <div class="header">
+    <div class="flex-middle">
+      <img class="location-logo" src="{{ machine.image }}" alt="logo" />
+      <span class="title"> {{ machine.location }} </span>
+
+      <button style="margin-left: 16px;" mat-flat-button color="primary" (click)="openRestockDialog()">
+        <mat-icon>replay</mat-icon> Restock
+      </button>
+
+    </div>
+    <div class="flex-top">
+      <button mat-fab color="primary" (click)="openEditMachineDialog()">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-fab color="warn" (click)="openConfirmDeleteDialog()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="info">
+    <div class="panel">
+      <span class="name-txt"> Machine ID </span>
+      <span class="val-txt"> {{ machine._id }} </span>
+    </div>
+
+    <div class="panel">
+      <span class="name-txt"> Stvar </span>
+      <span class="val-txt"> {{ machine.item }} </span>
+    </div>
+
+    <div class="panel">
+      <span class="name-txt"> Cena </span>
+      <span class="val-txt"> {{ machine.price }} RSD </span>
+    </div>
+
+    <div class="panel">
+      <span class="name-txt"> Cena Lokala (mesecno) </span>
+      <span class="val-txt"> {{ machine.locationPrice }} RSD </span>
+    </div>
+
+    <div class="panel">
+      <span class="name-txt"> Stanje Inventara </span>
+      <span class="val-txt"> {{ machine.stock }} / {{ machine.maxStock }} KOM </span>
+    </div>
+  </div>
+</div>

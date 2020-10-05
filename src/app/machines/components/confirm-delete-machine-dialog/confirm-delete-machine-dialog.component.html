@@ -1,0 +1,12 @@
+<div class="wrapper">
+  <div class="head">
+    <span> Obrisi Masinu </span>
+    <button mat-icon-button (click)="closeDialog()"> <mat-icon>close</mat-icon> </button>
+  </div>
+
+  <span class="confirm-txt"> Da li ste sigurni da zelite da obrisete ovu masinu? </span>
+  <div class="buttons">
+    <button mat-flat-button color="primary" (click)="closeDialog()"> Nazad </button>
+    <button mat-flat-button color="warn" (click)="delete()" > Obrisi </button>
+  </div>
+</div>
