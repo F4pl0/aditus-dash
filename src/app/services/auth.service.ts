@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {Router} from '@angular/router';
+import {LoaderService} from './loader.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class AuthService {
     public jwtHelper: JwtHelperService,
     private http: HttpClient,
     private snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private loaderService: LoaderService
   ) { }
 
   public isAuthenticated(): boolean {
@@ -24,6 +26,13 @@ export class AuthService {
     // Check whether the token is expired and return
     // true or false
     return !this.jwtHelper.isTokenExpired(token);
+  }
+
+  public isAdmin(): boolean {
+    const token = localStorage.getItem('token');
+    // Check whether the token is expired and return
+    // true or false
+    return this.jwtHelper.decodeToken(token).admin;
   }
 
   public getToken(): string {
@@ -36,11 +45,13 @@ export class AuthService {
 
   public async Login( email, pass ): Promise<void> {
 
+    this.loaderService.setLoading(true);
     const headers = {};
     const body = {email, pass};
     await this.http.post<any>(environment.backendEndpoint + 'auth/login', body, {headers}).toPromise()
       .then(
         res => { // Success
+          this.loaderService.setLoading(false);
           console.log(res);
           if (res.token) {
             this.snackBar.open('Uspesno Logovanje', 'U Redu', {
@@ -56,6 +67,7 @@ export class AuthService {
           }
         },
         msg => { // Error
+          this.loaderService.setLoading(false);
           console.log(msg);
           this.snackBar.open('Doslo je do greske u komunikaciji sa serverom.', 'U Redu', {
             duration: 5000,

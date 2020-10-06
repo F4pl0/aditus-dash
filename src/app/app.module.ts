@@ -15,6 +15,7 @@ import {AuthModule} from './auth/auth.module';
 import {HttpClientModule} from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MachinesModule} from './machines/machines.module';
+import { LoaderComponent } from './loader/loader.component';
 
 // tslint:disable-next-line:typedef
 export function tokenGetter() {
@@ -23,7 +24,8 @@ export function tokenGetter() {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

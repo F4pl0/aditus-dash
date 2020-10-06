@@ -12,6 +12,7 @@ import {AuthService} from '../../../services/auth.service';
 export class NavBarComponent implements OnInit {
 
   isAuthed = false;
+  isAdmin = false;
   name = '';
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -27,6 +28,7 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit(): void {
     this.name = this.authService.getUserName();
+    this.isAdmin = this.authService.isAdmin();
   }
 
   logout(): void {

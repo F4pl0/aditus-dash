@@ -1,0 +1,28 @@
+<div class="wrapper">
+  <div class="head">
+    <span> Nov Korisnik </span>
+    <button mat-icon-button (click)="closeDialog()"> <mat-icon>close</mat-icon> </button>
+  </div>
+
+  <form [formGroup]="userForm" (ngSubmit)="onSubnit(userForm.value)" >
+
+    <mat-form-field>
+      <mat-label> Ime i Prezime </mat-label>
+      <input matInput type="text" formControlName="name" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label> Email </mat-label>
+      <input matInput type="email" formControlName="email" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label> Lozinka </mat-label>
+      <input matInput type="text" formControlName="pass" />
+    </mat-form-field>
+
+    <mat-checkbox formControlName="admin"> Admin </mat-checkbox>
+
+    <button mat-flat-button color="primary"> Dodaj </button>
+  </form>
+</div>

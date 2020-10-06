@@ -1,0 +1,20 @@
+.wrapper {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+
+  .actions {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+td .star{
+  display: flex;
+
+  b {
+    padding-left: 4px;
+    padding-top: 3px;
+  }
+}
