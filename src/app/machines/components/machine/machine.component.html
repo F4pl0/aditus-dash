@@ -44,4 +44,50 @@
       <span class="val-txt"> {{ machine.stock }} / {{ machine.maxStock }} KOM </span>
     </div>
   </div>
+
+  <div class="chart-wrapper">
+    <ngx-charts-line-chart
+      *ngIf="viewChart"
+      [view]="view"
+      [legend]="legend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxis]="xAxis"
+      [yAxis]="yAxis"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [timeline]="timeline"
+      [results]="chartData"
+    >
+    </ngx-charts-line-chart>
+  </div>
+
+  <div class="table-wrapper" *ngIf="showTable">
+    <table mat-table matSort [dataSource]="machine.days">
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Dan </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button [disabled]="element.csvUrl.length < 1" (click)="openCSV(element.csvUrl)">
+            <mat-icon>article</mat-icon>
+          </button>
+          {{element.date.getDate()}}/{{element.date.getMonth()+1}}/{{element.date.getFullYear()}}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="sales">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Prodaje </th>
+        <td mat-cell *matCellDef="let element"> {{element.sales}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Cena </th>
+        <td mat-cell *matCellDef="let element"> {{element.price}} RSD </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[10, 30, 100]" showFirstLastButtons></mat-paginator>
+  </div>
+
 </div>

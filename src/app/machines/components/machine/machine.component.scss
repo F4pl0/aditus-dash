@@ -68,4 +68,18 @@
       }
     }
   }
+
+  .chart-wrapper {
+    margin-top: 48px;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+  }
+
+  .table-wrapper {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 64px;
+  }
 }

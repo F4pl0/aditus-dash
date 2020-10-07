@@ -21,10 +21,18 @@ import {MatInputModule} from '@angular/material/input';
 import { EditMachineDialogComponent } from './components/edit-machine-dialog/edit-machine-dialog.component';
 import { ConfirmDeleteMachineDialogComponent } from './components/confirm-delete-machine-dialog/confirm-delete-machine-dialog.component';
 import { RestockDialogComponent } from './components/restock-dialog/restock-dialog.component';
+import {MatTableModule} from '@angular/material/table';
+import {NgxChartsModule} from '@swimlane/ngx-charts';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
 
 
 @NgModule({
-  declarations: [RootComponent, ListComponent, MachineComponent, NavBarComponent, NewMachineDialogComponent, EditMachineDialogComponent, ConfirmDeleteMachineDialogComponent, RestockDialogComponent],
+    declarations: [
+      RootComponent,
+      ListComponent,
+      MachineComponent,
+      NavBarComponent, NewMachineDialogComponent, EditMachineDialogComponent, ConfirmDeleteMachineDialogComponent, RestockDialogComponent],
   imports: [
     CommonModule,
     MachinesRoutingModule,
@@ -46,7 +54,11 @@ import { RestockDialogComponent } from './components/restock-dialog/restock-dial
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule,
+    NgxChartsModule,
+    MatPaginatorModule,
+    MatSortModule,
   ]
 })
 export class MachinesModule { }
