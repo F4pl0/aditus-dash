@@ -63,13 +63,10 @@
   </div>
 
   <div class="table-wrapper" *ngIf="showTable">
-    <table mat-table matSort [dataSource]="machine.days">
+    <table mat-table matSort [dataSource]="dataSource">
       <ng-container matColumnDef="date">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Dan </th>
         <td mat-cell *matCellDef="let element">
-          <button mat-icon-button [disabled]="element.csvUrl.length < 1" (click)="openCSV(element.csvUrl)">
-            <mat-icon>article</mat-icon>
-          </button>
           {{element.date.getDate()}}/{{element.date.getMonth()+1}}/{{element.date.getFullYear()}}
         </td>
       </ng-container>
@@ -82,6 +79,18 @@
       <ng-container matColumnDef="price">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Cena </th>
         <td mat-cell *matCellDef="let element"> {{element.price}} RSD </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Akcije </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button [disabled]="element.csvUrl.length < 1" (click)="openCSV(element.csvUrl)">
+            <mat-icon>article</mat-icon>
+          </button>
+          <button mat-icon-button [disabled]="element.csvUrl.length < 1" (click)="downloadCSV(element.csvUrl)">
+            <mat-icon>save_alt</mat-icon>
+          </button>
+        </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

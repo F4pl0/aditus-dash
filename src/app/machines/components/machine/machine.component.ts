@@ -7,6 +7,8 @@ import {EditMachineDialogComponent} from '../edit-machine-dialog/edit-machine-di
 import {RestockDialogComponent} from '../restock-dialog/restock-dialog.component';
 import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
+import {ViewCsvDialogComponent} from '../view-csv-dialog/view-csv-dialog.component';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-machine',
@@ -15,7 +17,8 @@ import {MatPaginator} from '@angular/material/paginator';
 })
 export class MachineComponent implements OnInit, AfterViewInit {
 
-  displayedColumns: string[] = ['date', 'sales', 'price'];
+  displayedColumns: string[] = ['date', 'sales', 'price', 'actions'];
+  dataSource: MatTableDataSource<any>;
   machine: any = {
     days: [
       {date: new Date(),
@@ -68,8 +71,9 @@ export class MachineComponent implements OnInit, AfterViewInit {
             );
           });
           this.machine = res.machine;
-          this.machine.days.sort = this.sort;
-          this.machine.days.paginator = this.paginator;
+          this.dataSource = new MatTableDataSource<any>(this.machine.days);
+          this.dataSource.sort = this.sort;
+          this.dataSource.paginator = this.paginator;
           this.viewChart = true;
           this.showTable = true;
           console.log(this.machine);
@@ -135,8 +139,16 @@ export class MachineComponent implements OnInit, AfterViewInit {
     });
   }
 
-  openCSV(csv): void {
+  downloadCSV(csv): void {
     window.open(csv, '_blank');
+  }
+
+  openCSV(csv): void {
+    this.dialog.open(ViewCsvDialogComponent, {
+      data: {
+        csv
+      }
+    });
   }
 
 }

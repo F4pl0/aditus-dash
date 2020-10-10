@@ -25,6 +25,7 @@ import {MatTableModule} from '@angular/material/table';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
+import { ViewCsvDialogComponent } from './components/view-csv-dialog/view-csv-dialog.component';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import {MatSortModule} from '@angular/material/sort';
       RootComponent,
       ListComponent,
       MachineComponent,
-      NavBarComponent, NewMachineDialogComponent, EditMachineDialogComponent, ConfirmDeleteMachineDialogComponent, RestockDialogComponent],
+      NavBarComponent, NewMachineDialogComponent, EditMachineDialogComponent, ConfirmDeleteMachineDialogComponent, RestockDialogComponent, ViewCsvDialogComponent],
   imports: [
     CommonModule,
     MachinesRoutingModule,
