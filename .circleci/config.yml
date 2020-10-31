@@ -21,11 +21,6 @@ jobs:
           command: |
             npm i @angular/cli
       - run:
-        name: Change Production API Endpoint
-        command: |
-          cd src/environments/
-          echo "export const environment = { production: true, backendEndpoint: 'https://api.ba.365aditus.com/api/' };" > environment.prod.ts
-      - run:
           name: Make Production Build for Austria
           command: |
             ./node_modules/@angular/cli/bin/ng build --prod
