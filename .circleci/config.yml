@@ -6,48 +6,6 @@ dependencies:
     - npm install npm@latest -g # Should fix bug in ng test
     - npm install @angular/cli -g
 jobs:
-  build-au-frontend:
-    working_directory: ~
-    executor:
-      name: node/default
-    steps:
-      - checkout
-      - node/install-packages:
-          app-dir: ~
-          cache-path: ~/node_modules
-          override-ci-command: npm install
-      - run:
-          name: Install Angular CLI
-          command: |
-            npm i @angular/cli
-      - run:
-          name: Make Production Build for Austria
-          command: |
-            ./node_modules/@angular/cli/bin/ng build --prod
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .
-
-  deploy-au-frontend:
-    working_directory: ~
-    machine:
-      enabled: true
-    steps:
-      - attach_workspace:
-          at: .
-      - add_ssh_keys
-      - run:
-          name: Upload Production build to server
-          command: |
-            cd dist/
-            scp -r ./AditusDash/* root@au.365aditus.com:/root/aditusdash-front-temp/
-      - run:
-          name: Deploy Frontend over SSH
-          command: |
-            cd dist/
-            ssh root@au.365aditus.com "sudo rm -rf /var/www/html/* && sudo mv /root/aditusdash-front-temp/* /var/www/html/"
-
   build-frontend-ba:
     working_directory: ~
     executor:
@@ -94,6 +52,48 @@ jobs:
             command: |
               cd dist/
               ssh root@ba.365aditus.com "sudo rm -rf /var/www/html/* && sudo mv /root/aditusdash-front-temp/* /var/www/html/"
+
+  build-au-frontend:
+    working_directory: ~
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - node/install-packages:
+          app-dir: ~
+          cache-path: ~/node_modules
+          override-ci-command: npm install
+      - run:
+          name: Install Angular CLI
+          command: |
+            npm i @angular/cli
+      - run:
+          name: Make Production Build for Austria
+          command: |
+            ./node_modules/@angular/cli/bin/ng build --prod
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
+  deploy-au-frontend:
+    working_directory: ~
+    machine:
+      enabled: true
+    steps:
+      - attach_workspace:
+          at: .
+      - add_ssh_keys
+      - run:
+          name: Upload Production build to server
+          command: |
+            cd dist/
+            scp -r ./AditusDash/* root@au.365aditus.com:/root/aditusdash-front-temp/
+      - run:
+          name: Deploy Frontend over SSH
+          command: |
+            cd dist/
+            ssh root@au.365aditus.com "sudo rm -rf /var/www/html/* && sudo mv /root/aditusdash-front-temp/* /var/www/html/"
 workflows:
   build:
     jobs:
