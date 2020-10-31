@@ -38,7 +38,7 @@ jobs:
           root: .
           paths:
             - .
-            -
+
   deploy-ba-frontend:
     working_directory: ~
     machine:
