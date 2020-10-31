@@ -47,7 +47,8 @@ jobs:
           command: |
             cd dist/
             ssh root@au.365aditus.com "sudo rm -rf /var/www/html/* && sudo mv /root/aditusdash-front-temp/* /var/www/html/"
-  build-ba-frontend:
+
+  build-frontend-ba:
     working_directory: ~
     executor:
       name: node/default
@@ -75,7 +76,7 @@ jobs:
           paths:
             - .
 
-    deploy-ba-frontend:
+    deploy-frontend-ba:
       working_directory: ~
       machine:
         enabled: true
@@ -100,6 +101,13 @@ workflows:
       - deploy-au-frontend:
           requires:
             - build-au-frontend
+          filters:
+            branches:
+              only: master
+      - build-frontend-ba
+      - deploy-frontend-ba:
+          requires:
+            - build-frontend-ba
           filters:
             branches:
               only: master
