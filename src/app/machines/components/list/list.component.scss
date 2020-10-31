@@ -58,3 +58,10 @@
     }
   }
 }
+
+.wrapper-mobile {
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  flex-wrap: nowrap !important;
+}

@@ -9,6 +9,9 @@ import {MatSort} from '@angular/material/sort';
 import {MatPaginator} from '@angular/material/paginator';
 import {ViewCsvDialogComponent} from '../view-csv-dialog/view-csv-dialog.component';
 import {MatTableDataSource} from '@angular/material/table';
+import {Observable} from 'rxjs';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import {map, shareReplay} from 'rxjs/operators';
 
 @Component({
   selector: 'app-machine',
@@ -47,6 +50,12 @@ export class MachineComponent implements OnInit, AfterViewInit {
   viewChart = false;
   view: any[] = [0, 500];
 
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
+
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -54,7 +63,8 @@ export class MachineComponent implements OnInit, AfterViewInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private machineService: MachineService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private breakpointObserver: BreakpointObserver,
   ) { }
 
   ngOnInit(): void {

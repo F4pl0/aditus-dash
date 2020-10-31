@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div [ngClass]="(isHandset$ | async) ? 'wrapper wrapper-mobile' : 'wrapper'">
   <div class="header">
     <div class="flex-middle">
       <img class="location-logo" src="{{ machine.image }}" alt="logo" />

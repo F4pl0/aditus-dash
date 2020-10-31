@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div [ngClass]="(isHandset$ | async) ? 'wrapper wrapper-mobile' : 'wrapper'">
   <div class="machine" *ngFor="let machine of machines">
     <h1> {{ machine.location }} </h1>
     <img src="{{machine.image}}" alt="Logo" />

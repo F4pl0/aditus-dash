@@ -83,3 +83,13 @@
     margin-bottom: 64px;
   }
 }
+
+.wrapper-mobile {
+  .header {
+    flex-direction: column;
+
+    .flex-middle {
+      flex-direction: column;
+    }
+  }
+}
