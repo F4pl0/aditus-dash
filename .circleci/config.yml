@@ -11,6 +11,10 @@ jobs:
     executor:
       name: node/default
     steps:
+      - run:
+          name: Set Envirnoment For it to allocate 5GB
+          command: |
+            export NODE_OPTIONS=--max_old_space_size=4096
       - checkout
       - node/install-packages:
           app-dir: ~
