@@ -6,6 +6,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {LoaderService} from '../../../services/loader.service';
 import {log} from 'util';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-view-csv-dialog',
@@ -20,6 +21,7 @@ export class ViewCsvDialogComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   viewTable = false;
+  currency = environment.currency;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) private data,

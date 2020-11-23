@@ -29,7 +29,7 @@ jobs:
           command: |
             cd src/environments/
             rm environment.prod.ts -f
-            echo "export const environment = { production: true, backendEndpoint: 'https://api.ba.365aditus.com/api/' };" > environment.prod.ts
+            echo "export const environment = { production: true, backendEndpoint: 'https://api.ba.365aditus.com/api/', currency:'KM' };" > environment.prod.ts
       - run:
           name: Make Production Build for Bosnia
           command: |

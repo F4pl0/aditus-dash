@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  backendEndpoint: 'http://localhost:3000/api/'
+  backendEndpoint: 'http://localhost:3000/api/',
+  currency: 'EUR'
 };
 
 /*

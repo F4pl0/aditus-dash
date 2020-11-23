@@ -12,6 +12,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {Observable} from 'rxjs';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map, shareReplay} from 'rxjs/operators';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-machine',
@@ -55,6 +56,9 @@ export class MachineComponent implements OnInit, AfterViewInit {
       map(result => result.matches),
       shareReplay()
     );
+
+
+  currency = environment.currency;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;

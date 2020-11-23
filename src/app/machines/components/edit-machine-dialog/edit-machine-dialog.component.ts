@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MachineService} from '../../services/machine.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-edit-machine-dialog',
@@ -12,6 +13,7 @@ export class EditMachineDialogComponent implements OnInit {
 
   machineForm: FormGroup;
   imgStr: string | ArrayBuffer = '';
+  currency = environment.currency;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) private data,

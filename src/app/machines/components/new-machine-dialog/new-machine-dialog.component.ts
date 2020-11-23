@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MachineService} from '../../services/machine.service';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-new-machine-dialog',
@@ -12,6 +13,7 @@ export class NewMachineDialogComponent implements OnInit {
 
   machineForm: FormGroup;
   imgStr: string | ArrayBuffer = '';
+  currency = environment.currency;
 
   constructor(
     private  dialogRef: MatDialogRef<NewMachineDialogComponent>,
